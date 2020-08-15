@@ -15,5 +15,4 @@ yarn-error.log
 ./.docker/dbdata
 
 ##IDE files
-.idea/
 .idea/workspace.xml
