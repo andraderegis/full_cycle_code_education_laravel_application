@@ -10,3 +10,10 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+##Docker database files
+./.docker/dbdata
+
+##IDE files
+.idea/
+.idea/workspace.xml
