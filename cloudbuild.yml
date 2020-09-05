@@ -5,22 +5,22 @@ steps:
   
   - id: "Running composer"
     name: 'gcr.io/cloud-builders/docker'
-    args: ['exec', '-it', 'app', 'composer', 'install']
+    args: ['exec', '-t', 'app', 'composer', 'install']
 
   - id: "Copying .env"
     name: 'gcr.io/cloud-builders/docker'
-    args: ['exec', '-it', 'app', 'cp', '.env.example', '.env']
+    args: ['exec', '-t', 'app', 'cp', '.env.example', '.env']
 
   - id: "Running key:generate"
     name: 'gcr.io/cloud-builders/docker'
-    args: ['exec', '-it', 'app', 'php', '/var/www/artisan', 'key:generate']
+    args: ['exec', '-t', 'app', 'php', '/var/www/artisan', 'key:generate']
 
   - id: "Running migrations"
     name: 'gcr.io/cloud-builders/docker'
-    args: ['exec', '-it', 'app', 'php', '/var/www/artisan', 'migrate']
+    args: ['exec', '-t', 'app', 'php', '/var/www/artisan', 'migrate']
 
   - id: "Running php unit"
     name: 'gcr.io/cloud-builders/docker'
-    args: ['exec', '-it', 'app', 'php', '/var/www/vendor/bin/phpunit', '-c', '/var/www/phpunit.xml']
+    args: ['exec', '-t', 'app', 'php', '/var/www/vendor/bin/phpunit', '-c', '/var/www/phpunit.xml']
 substitutions:
   _DOCKER_COMPOSE_VERSION: 1.26.2    
