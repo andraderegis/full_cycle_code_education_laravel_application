@@ -5,6 +5,6 @@ steps:
   
   - id: 'Running docker ps'
     name: 'gcr.io/cloud-builders/docker'
-    arg: ['ps']
+    args: ['ps']
 substitutions:
   _DOCKER_COMPOSE_VERSION: 1.26.2    
