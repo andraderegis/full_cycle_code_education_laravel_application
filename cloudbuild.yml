@@ -1,10 +1,14 @@
 steps:
-  - id: 'Running docker compose'
+  - id: "Running docker compose"
     name: 'gcr.io/$PROJECT_ID/docker-compose:${_DOCKER_COMPOSE_VERSION}'
     args: ['-f', 'docker-compose-ci.yml', 'up', '-d']
   
-  - id: 'Running docker ps'
+  - id: "Running docker ps"
     name: 'gcr.io/cloud-builders/docker'
     args: ['ps']
+
+  - id: "Running composer",
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['exec', '-t', 'app', 'composer', 'install']
 substitutions:
   _DOCKER_COMPOSE_VERSION: 1.26.2    
