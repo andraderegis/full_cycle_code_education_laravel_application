@@ -3,6 +3,10 @@ steps:
     name: 'gcr.io/$PROJECT_ID/docker-compose:${_DOCKER_COMPOSE_VERSION}'
     args: ['-f', 'docker-compose-ci.yml', 'up', '-d']
 
+  - id: "List containers"
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['ps']
+
   - id: "Change /var/www owner"
     name: 'gcr.io/cloud-builders/docker'
     args: ['exec','-u','root','-t','app','chown','-R','www-data:www-data','/var/www']
