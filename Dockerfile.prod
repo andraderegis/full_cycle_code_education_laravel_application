@@ -14,7 +14,7 @@ RUN composer install \
     && chown -R $USER:www-data storage \
     && chown -R $USER:www-data bootstrap/cache
 
-# RUN ln -s public html
+RUN ln -s public html
 
 EXPOSE 9000
 ENTRYPOINT ["php-fpm"]
